@@ -11,7 +11,7 @@ namespace Kodai.Fluid.SPH {
         public Color WaterColor;
 
         void OnRenderObject() {
-            if (solver.Simulate) DrawParticle();
+            DrawParticle();
         }
 
         void DrawParticle() {
@@ -24,7 +24,6 @@ namespace Kodai.Fluid.SPH {
             m.SetMatrix("_InverseMatrix", inverseViewMatrix);
             m.SetColor("_WaterColor", WaterColor);
             m.SetBuffer("_ParticlesBuffer", solver.ParticlesBufferRead);
-            m.SetBuffer("_ParticlesDensityBuffer", solver.ParticleDensitiesBuffer);
             Graphics.DrawProcedural(MeshTopology.Points, solver.NumParticles);
         }
     }

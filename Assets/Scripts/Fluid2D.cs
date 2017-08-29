@@ -39,7 +39,7 @@ namespace Kodai.Fluid.SPH {
             }
 
             cs.SetVector("_MousePos", screenToWorldPointPos);
-            cs.SetFloat("_Radius", MouseInteractionRadius);
+            cs.SetFloat("_MouseRadius", MouseInteractionRadius);
             cs.SetBool("_MouseDown", isMouseDown);
         }
 
