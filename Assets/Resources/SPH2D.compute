@@ -105,7 +105,7 @@ inline float2 CalculateLapVelocity(float r, float2 P_velocity, float2 N_velocity
 // ▼ カーネル関数
 
 //--------------------------------------------------------------------------------------
-// 密度の算出 : 式(?)
+// 密度の算出
 //--------------------------------------------------------------------------------------
 [numthreads(THREAD_SIZE_X, 1, 1)]
 void DensityCS(uint3 DTid : SV_DispatchThreadID) {
@@ -136,7 +136,7 @@ void DensityCS(uint3 DTid : SV_DispatchThreadID) {
 
 
 //--------------------------------------------------------------------------------------
-// 圧力の算出 : 式(?)
+// 圧力の算出
 //--------------------------------------------------------------------------------------
 [numthreads(THREAD_SIZE_X, 1, 1)]
 void PressureCS(uint3 DTid : SV_DispatchThreadID) {
@@ -151,7 +151,7 @@ void PressureCS(uint3 DTid : SV_DispatchThreadID) {
 
 
 //--------------------------------------------------------------------------------------
-// 力(加速度)の算出 : 式(?)
+// 力(加速度)の算出
 //--------------------------------------------------------------------------------------
 [numthreads(THREAD_SIZE_X, 1, 1)]
 void ForceCS(uint3 DTid : SV_DispatchThreadID) {
@@ -216,10 +216,8 @@ void IntegrateCS(uint3 DTid : SV_DispatchThreadID) {
 		float pushBack = _MouseRadius-length(dir);
 		acceleration += 100 * pushBack * normalize(dir);
 	}
-
-
-	// 衝突判定を書くならここ
-
+    
+	// 衝突判定を書くならここ -----
 
 	// 壁境界(ペナルティ法)
 	float dist = dot(float3(position, 1), float3(1, 0, 0));
