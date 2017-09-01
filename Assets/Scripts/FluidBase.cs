@@ -33,7 +33,7 @@ namespace Kodai.Fluid.SPH {
         [SerializeField] private float pressureStiffness = 200.0f;                          // 圧力項係数
         [SerializeField] protected float restDensity = 1000.0f;                             // 静止密度
         [SerializeField] protected float particleMass = 0.0002f;                            // 粒子質量
-        [SerializeField, Range(1, 80)] protected float viscosity = 0.1f;                    // 粘性係数
+        [SerializeField] protected float viscosity = 0.1f;                                  // 粘性係数
         [SerializeField] protected float maxAllowableTimestep = 0.005f;                     // 時間刻み幅
         [SerializeField] protected float wallStiffness = 3000.0f;                           // ペナルティ法の壁の力
         [SerializeField] protected int iterations = 4;                                      // シミュレーションの1フレーム当たりのイテレーション回数
@@ -163,7 +163,7 @@ namespace Kodai.Fluid.SPH {
         /// 子クラスでシェーダー定数の転送を追加する場合はこのメソッドを利用する
         /// </summary>
         /// <param name="shader"></param>
-        protected abstract void AdditionalCSParams(ComputeShader shader);
+        protected virtual void AdditionalCSParams(ComputeShader shader) { }
 
         /// <summary>
         /// パーティクル初期位置と初速の設定
